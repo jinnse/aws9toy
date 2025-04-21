@@ -1,0 +1,29 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: cron-news
+  namespace: default
+spec:
+  scaleTargetRef:
+    name: news-deploy
+  pollingInterval: 30
+  cooldownPeriod: 300
+  minReplicaCount: 1
+  maxReplicaCount: 6
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "Asia/Seoul"
+        start: "00 09 * * *"
+        end: "00 18 * * *"
+        desiredReplicas: "3"
+    - type: cron
+      metadata:
+        timezone: "Asia/Seoul"
+        start: "0 18 * * *"
+        end: "0 9 * * *"
+        desiredReplicas: "1"
+    - type: cpu
+      metadata:
+        tpye: Utilization
+        value: "60"

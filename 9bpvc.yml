@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: 9b-pvc
+  namespace: aws9b
+spec: 
+  storageClassName: 9b-sc
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi

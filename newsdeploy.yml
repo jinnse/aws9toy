@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: news-deploy
+  namespace: aws9b
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: news
+  template:
+    metadata:
+      labels:
+        app: news
+    spec:
+      containers:
+        - name: news-ctna
+          image: jinsse/aws9:news
+          ports:
+            - containerPort: 80
+              name: http
+          volumeMounts:
+            - name: myvol1
+              mountPath: /usr/share/nginx/html/data
+      volumes:
+        - name: myvol1
+          persistentVolumeClaim:
+            claimName: 9b-pvc  # ← 여기가 PVC 이름
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: aws9b-svc-news
+  namespace: aws9b
+  labels:
+    app.kubernetes.io/instance: aws9toy
+spec:
+  type: LoadBalancer
+  selector:
+    app: news
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80

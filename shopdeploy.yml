@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shop-deploy
+  namespace: aws9b
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shop
+  template:
+    metadata:
+      labels:
+        app: shop
+    spec:
+      containers:
+        - name: shop-ctna
+          image: jinsse/aws9:shop
+          ports:
+            - containerPort: 80
+              name: http
+          volumeMounts:
+            - name: myvol1
+              mountPath: /usr/share/nginx/html/data
+      volumes:
+        - name: myvol1
+          persistentVolumeClaim:
+            claimName: 9b-pvc  # ← 여기가 PVC 이름
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: aws9b-svc-shop
+  namespace: aws9b
+  labels:
+    app.kubernetes.io/instance: aws9toy
+spec:
+  type: LoadBalancer
+  selector:
+    app: shop
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80

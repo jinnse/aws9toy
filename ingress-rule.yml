@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: aws9-portal
+  namespace: aws9b
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: www.aws9.pri
+    http:
+      paths:
+      - path: /shop(/|$)(.*)   # www.aws9.pri/shop
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: aws9b-svc-shop
+            port:
+              number: 80    # cluster-ip 의 포트번호
+      - path: /blog(/|$)(.*)   # www.aws9.pri/blog
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: aws9b-svc-blog
+            port:
+              number: 80
+      - path: /news(/|$)(.*)   # www.aws9.pri/shop
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: aws9b-svc-news
+            port:
+              number: 80
+

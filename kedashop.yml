@@ -1,0 +1,23 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: cron-shop
+  namespace: aws9b
+spec:
+  scaleTargetRef:
+    name: shop-deploy
+  pollingInterval: 30
+  cooldownPeriod: 300
+  minReplicaCount: 1
+  maxReplicaCount: 6
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "Asia/Seoul"
+        start: "00 09 * * *"
+        end: "00 18 * * *"
+        desiredReplicas: "3"
+    - type: cpu
+      metadata:
+        tpye: Utilization
+        value: "60"
