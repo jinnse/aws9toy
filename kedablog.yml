@@ -2,7 +2,7 @@ apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
   name: cron-blog
-  namespace: default
+  namespace: aws9b
 spec:
   scaleTargetRef:
     name: blog-deploy
@@ -19,5 +19,5 @@ spec:
         desiredReplicas: "3"
     - type: cpu
       metadata:
-        tpye: Utilization
+        type: Utilization
         value: "60"

@@ -19,5 +19,5 @@ spec:
         desiredReplicas: "3"
     - type: cpu
       metadata:
-        tpye: Utilization
+        type: Utilization
         value: "60"

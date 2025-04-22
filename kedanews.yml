@@ -2,7 +2,7 @@ apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
   name: cron-news
-  namespace: default
+  namespace: aws9b
 spec:
   scaleTargetRef:
     name: news-deploy
@@ -25,5 +25,5 @@ spec:
         desiredReplicas: "1"
     - type: cpu
       metadata:
-        tpye: Utilization
+        type: Utilization
         value: "60"
