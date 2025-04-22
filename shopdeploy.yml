@@ -16,6 +16,11 @@ spec:
       containers:
         - name: shop-ctna
           image: jinsse/aws9:shop
+          resources:
+            request:
+              cpu: "100m"
+            limits:
+              cpu: "500m"
           ports:
             - containerPort: 80
               name: http

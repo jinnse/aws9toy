@@ -16,6 +16,11 @@ spec:
       containers:
         - name: blog-ctna
           image: jinsse/aws9:blog
+          resources:
+            request:
+              cpu: "100m"
+            limits:
+              cpu: "500m"
           ports:
             - containerPort: 80
               name: http
