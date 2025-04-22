@@ -17,12 +17,6 @@ spec:
         start: "00 09 * * *"
         end: "00 18 * * *"
         desiredReplicas: "3"
-    - type: cron
-      metadata:
-        timezone: "Asia/Seoul"
-        start: "0 18 * * *"
-        end: "0 9 * * *"
-        desiredReplicas: "1"
     - type: cpu
       metadata:
         type: Utilization
