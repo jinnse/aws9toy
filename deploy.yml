@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: blog-ctna
-          image: jinsse/aws9:blog
+          image: harbor.aws9.pri/aws9btoy/blog:blog
           resources:
             request:
               cpu: "100m"

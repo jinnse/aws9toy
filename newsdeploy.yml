@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: news-ctna
-          image: jinsse/aws9:news
+          image: harbor.aws9.pri/aws9btoy/news:news
           resources:
             request:
               cpu: "100m"
