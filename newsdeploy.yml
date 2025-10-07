@@ -18,8 +18,10 @@ spec:
           image: harbor.aws9.pri/aws9btoy/news:news
           resources:
             request:
+              memory: "128Mi"
               cpu: "100m"
             limits:
+              memory: "256Mi"
               cpu: "500m"
           ports:
             - containerPort: 80
