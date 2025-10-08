@@ -1,4 +1,4 @@
-# K8s ToyProject
+# K8S ToyProject
 <img width="811" height="651" alt="Image" src="https://github.com/user-attachments/assets/f58b2bb3-3f4e-4e20-960b-a000892a039a" />
 
 이 프로젝트는 Kubernetes 기반 온프레미스 인프라를 구축하고 Argocd를 통해 자동 배포까지 완성하는 과정을 설명합니다. 사용된 주요 노드는 다음과 같습니다:
