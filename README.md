@@ -6,6 +6,9 @@
 - K8S Cluster: master1 node1, node2, node3
 - NFS + DNS 서버, harbor (프라이빗 이미지 레지스트리)
 
+### Helm Chart
+해당 프로젝트의 헬름 차트 배포는 https://github.com/jinnse/aws9Chart 에 있습니다.
+
 ## Kubernetes 클러스터 구성
 - 마스터-워커 구조로 클러스터 구축  
 - Pod, Node, Service 등 Kubernetes 리소스를 관리
