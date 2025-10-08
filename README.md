@@ -4,7 +4,7 @@
 이 프로젝트는 Kubernetes 기반 온프레미스 인프라를 구축하고 Argocd를 통해 자동 배포까지 완성하는 과정을 설명합니다. 사용된 주요 노드는 다음과 같습니다:
 
 - K8S Cluster: master1 node1, node2, node3
-- dnf-dns (NFS + DNS 서버), harbor (프라이빗 이미지 레지스트리)
+- NFS + DNS 서버, harbor (프라이빗 이미지 레지스트리)
 
 ## Kubernetes 클러스터 구성
 - 마스터-워커 구조로 클러스터 구축  
